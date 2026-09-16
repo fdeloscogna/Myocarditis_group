@@ -722,41 +722,40 @@
     .t-top {
       display: flex;
       gap: 20px;
+      align-items: center;
       margin-bottom: 20px;
     }
-    .t-avatar {
-      width: 76px;
-      height: 76px;
-      border-radius: 50%;
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-heading);
-      font-size: 22px;
-      font-weight: 800;
-      color: #FFFFFF;
+    .t-avatar-wrapper {
       position: relative;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+      width: 86px;
+      height: 86px;
+      flex-shrink: 0;
     }
-    .av-chief { background: linear-gradient(135deg, #C8102E, #700013); }
-    .av-imaging { background: linear-gradient(135deg, #E82C48, #A6192E); }
-    .av-research { background: linear-gradient(135deg, #0F172A, #334155); }
-    .av-data { background: linear-gradient(135deg, #99001A, #C8102E); }
+    .t-avatar-img {
+      width: 86px;
+      height: 86px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+      border: 3px solid #FFFFFF;
+      box-shadow: 0 4px 14px rgba(200, 16, 46, 0.2), 0 2px 6px rgba(0, 0, 0, 0.1);
+      display: block;
+      background: #F1F5F9;
+    }
     
     .av-badge {
       position: absolute;
       bottom: -2px;
       right: -2px;
-      width: 26px;
-      height: 26px;
+      width: 28px;
+      height: 28px;
       border-radius: 50%;
       background: #FFFFFF;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 12px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+      font-size: 13px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
       border: 1px solid var(--border-color);
     }
     .t-name {
@@ -1681,7 +1680,10 @@
       <!-- Prof. Caforio -->
       <div class="t-card fi">
         <div class="t-top">
-          <div class="t-avatar av-chief">ALC<div class="av-badge"><i class="fas fa-star" style="color:#C8102E;"></i></div></div>
+          <div class="t-avatar-wrapper">
+            <img src="./images/alida_caforio.jpg" alt="Prof. Alida L.P. Caforio" class="t-avatar-img" onerror="this.src='https://curs-cardiogenetica.ro/wp-content/uploads/2026/02/Alida-Caforio.webp'">
+            <div class="av-badge"><i class="fas fa-star" style="color:#C8102E;"></i></div>
+          </div>
           <div>
             <div class="t-name">Prof. Alida L.P. Caforio</div>
             <div class="t-role">Group Lead, Principal Investigator</div>
@@ -1709,7 +1711,10 @@
       <!-- Dr. Baritussio -->
       <div class="t-card fi d1">
         <div class="t-top">
-          <div class="t-avatar av-imaging">AB<div class="av-badge"><i class="fas fa-camera" style="color:#C8102E;"></i></div></div>
+          <div class="t-avatar-wrapper">
+            <img src="./images/anna_baritussio.jpg" alt="Dr. Anna Baritussio" class="t-avatar-img" onerror="this.src='https://www.conferenceharvester.com/uploads/harvester/photos/cropEOLGZJVW-Presenter-BaritussioA.jpg'">
+            <div class="av-badge"><i class="fas fa-camera" style="color:#C8102E;"></i></div>
+          </div>
           <div>
             <div class="t-name">Dr. Anna Baritussio</div>
             <div class="t-role">Cardiovascular Imaging Expert</div>
@@ -1735,7 +1740,10 @@
       <!-- Dr. Giordani -->
       <div class="t-card fi d2">
         <div class="t-top">
-          <div class="t-avatar av-research">AG<div class="av-badge"><i class="fas fa-flask" style="color:#C8102E;"></i></div></div>
+          <div class="t-avatar-wrapper">
+            <img src="./images/andrea_giordani.jpg" alt="Dr. Andrea Silvio Giordani" class="t-avatar-img" onerror="this.src='https://s3-eu-west-1.amazonaws.com/miodottore.it/doctor/87f8e6/87f8e6b68cc7d9376f24bf80255e2e68_large.jpg'">
+            <div class="av-badge"><i class="fas fa-flask" style="color:#C8102E;"></i></div>
+          </div>
           <div>
             <div class="t-name">Dr. Andrea Silvio Giordani</div>
             <div class="t-role">Clinical Researcher &amp; Cardiologist</div>
@@ -1760,7 +1768,10 @@
       <!-- Dr. Scognamiglio -->
       <div class="t-card fi d3">
         <div class="t-top">
-          <div class="t-avatar av-data">FS<div class="av-badge"><i class="fas fa-code" style="color:#C8102E;"></i></div></div>
+          <div class="t-avatar-wrapper">
+            <img src="./images/federico_scognamiglio.jpg" alt="Dr. Federico Scognamiglio" class="t-avatar-img" onerror="this.src='https://i1.rgstatic.net/ii/profile.image/1159544138932225-1653468274320_Q512/Federico-Scognamiglio.jpg'">
+            <div class="av-badge"><i class="fas fa-code" style="color:#C8102E;"></i></div>
+          </div>
           <div>
             <div class="t-name">Dr. Federico Scognamiglio</div>
             <div class="t-role">Data Scientist &amp; Biostatistician</div>
