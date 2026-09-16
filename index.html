@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CardioImmunology Group - University of Padova</title>
+  <meta name="description" content="CardioImmunology Research Group at the University of Padova. Advancing diagnosis, prognosis, and treatment of myocarditis, pericarditis, and inflammatory cardiomyopathies.">
+  <meta name="keywords" content="myocarditis, cardioimmunology, Padova, Caforio, CARDIM, inflammatory cardiomyopathy, cardiac MRI">
+  <meta property="og:title" content="CardioImmunology Group - University of Padova">
+  <meta property="og:description" content="Advancing the diagnosis and treatment of myocarditis and inflammatory heart disease.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --bg-deep:#08090d;--bg-card:#10121a;--bg-elevated:#161924;
+      --bg-glass:rgba(22,25,36,0.7);--border:rgba(255,255,255,0.07);
+      --border-accent:rgba(100,140,255,0.25);--accent-1:#4f7fff;--accent-2:#7c5fff;
+      --accent-3:#e05ca0;--text-primary:#f0f2ff;--text-secondary:#9da8c7;
+      --text-muted:#5c6480;
+      --gradient-hero:linear-gradient(135deg,#0f1729 0%,#0d0f1a 50%,#12091e 100%);
+      --gradient-accent:linear-gradient(135deg,#4f7fff,#7c5fff);
+      --shadow-glow:0 0 40px rgba(79,127,255,0.12);
+      --radius-sm:8px;--radius-md:14px;--radius-lg:22px;--radius-xl:32px;
+      --font-d:'Outfit',sans-serif;--font-b:'Inter',sans-serif;
+      --tr:all 0.3s cubic-bezier(0.4,0,0.2,1);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:var(--font-b);background:var(--bg-deep);color:var(--text-primary);line-height:1.65;overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+    ::-webkit-scrollbar{width:6px}
+    ::-webkit-scrollbar-track{background:var(--bg-deep)}
+    ::-webkit-scrollbar-thumb{background:var(--accent-1);border-radius:3px}
+    .container{max-width:1200px;margin:0 auto;padding:0 24px}
+    .section-label{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--accent-1);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+    .section-label::before{content:'';width:24px;height:2px;background:var(--accent-1)}
+    .section-title{font-family:var(--font-d);font-size:clamp(28px,4vw,44px);font-weight:700;line-height:1.15;color:var(--text-primary)}
+    .section-title span{background:var(--gradient-accent);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .section-desc{font-size:16px;color:var(--text-secondary);max-width:600px;line-height:1.75;margin-top:16px}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:50px;font-size:14px;font-weight:600;cursor:pointer;border:none;transition:var(--tr);font-family:var(--font-b)}
+    .btn-primary{background:var(--gradient-accent);color:white;box-shadow:0 4px 20px rgba(79,127,255,0.3)}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(79,127,255,0.45)}
+    .btn-outline{background:transparent;color:var(--text-primary);border:1.5px solid var(--border-accent)}
+    .btn-outline:hover{background:rgba(79,127,255,0.1);border-color:var(--accent-1)}
+    .tag{display:inline-block;padding:4px 12px;border-radius:50px;font-size:11px;font-weight:600;background:rgba(79,127,255,0.12);color:var(--accent-1);border:1px solid rgba(79,127,255,0.2)}
+
+    /* NAVBAR */
+    #navbar{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 0;transition:var(--tr)}
+    #navbar.scrolled{background:rgba(8,9,13,0.93);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:10px 0}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between}
+    .nav-logo{display:flex;align-items:center;gap:10px;font-family:var(--font-d);font-weight:700;font-size:18px}
+    .logo-icon{width:36px;height:36px;background:var(--gradient-accent);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px}
+    .nav-links{display:flex;align-items:center;gap:6px;list-style:none}
+    .nav-links a{padding:8px 14px;border-radius:var(--radius-sm);font-size:13px;font-weight:500;color:var(--text-secondary);transition:var(--tr)}
+    .nav-links a:hover{color:var(--text-primary);background:rgba(255,255,255,0.05)}
+    .nav-cta{background:var(--gradient-accent)!important;color:white!important;border-radius:50px!important}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+    .hamburger span{width:22px;height:2px;background:var(--text-primary);border-radius:2px;display:block;transition:var(--tr)}
+    .mobile-menu{display:none}
+
+    /* HERO */
+    #hero{min-height:100vh;display:flex;align-items:center;background:var(--gradient-hero);position:relative;overflow:hidden;padding-top:80px}
+    .hero-bg-orbs{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+    .orb{position:absolute;border-radius:50%;filter:blur(120px);opacity:0.18}
+    .orb-1{width:600px;height:600px;background:#4f7fff;top:-200px;right:-100px;animation:floatOrb 8s ease-in-out infinite}
+    .orb-2{width:400px;height:400px;background:#7c5fff;bottom:-100px;left:-50px;animation:floatOrb 10s ease-in-out infinite reverse}
+    .orb-3{width:300px;height:300px;background:#e05ca0;top:40%;left:40%;animation:floatOrb 6s ease-in-out infinite}
+    @keyframes floatOrb{0%,100%{transform:translate(0,0)}50%{transform:translate(20px,-30px)}}
+    .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(79,127,255,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(79,127,255,0.04) 1px,transparent 1px);background-size:60px 60px}
+    .hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;padding:80px 0}
+    .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(79,127,255,0.1);border:1px solid rgba(79,127,255,0.3);border-radius:50px;padding:6px 14px;font-size:12px;font-weight:600;color:var(--accent-1);margin-bottom:24px}
+    .dot{width:6px;height:6px;border-radius:50%;background:var(--accent-1);animation:pulse 2s infinite;display:inline-block}
+    @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(1.3)}}
+    .hero-title{font-family:var(--font-d);font-size:clamp(36px,5vw,60px);font-weight:800;line-height:1.05;margin-bottom:24px}
+    .line-grad{background:var(--gradient-accent);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .hero-desc{font-size:17px;color:var(--text-secondary);line-height:1.75;margin-bottom:36px;max-width:500px}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:48px}
+    .hero-stats{display:flex;gap:32px;padding-top:32px;border-top:1px solid var(--border)}
+    .stat-num{font-family:var(--font-d);font-size:28px;font-weight:700;background:var(--gradient-accent);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .stat-label{font-size:12px;color:var(--text-muted);font-weight:500;margin-top:2px}
+    .hero-visual{display:flex;flex-direction:column;gap:16px}
+    .hero-card{background:var(--bg-glass);backdrop-filter:blur(16px);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px 24px;transition:var(--tr)}
+    .hero-card:hover{border-color:var(--border-accent);transform:translateY(-2px)}
+    .hc-head{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+    .hc-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+    .ic-blue{background:rgba(79,127,255,0.15);color:var(--accent-1)}
+    .ic-purple{background:rgba(124,95,255,0.15);color:var(--accent-2)}
+    .ic-pink{background:rgba(224,92,160,0.15);color:var(--accent-3)}
+    .ic-green{background:rgba(0,200,130,0.12);color:#00c987}
+    .hc-title{font-weight:600;font-size:14px;color:var(--text-primary)}
+    .hc-sub{font-size:12px;color:var(--text-muted);margin-top:2px}
+    .hero-card p{font-size:13px;color:var(--text-secondary);line-height:1.6}
+
+    /* ABOUT */
+    #about{padding:100px 0}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+    .about-card{background:linear-gradient(145deg,rgba(20,24,40,0.9),rgba(12,14,24,0.95));border:1px solid var(--border);border-radius:var(--radius-xl);padding:40px;position:relative;overflow:hidden}
+    .about-card::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;border-radius:50%;background:var(--gradient-accent);opacity:0.06;filter:blur(40px)}
+    .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:28px}
+    .stat-box{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:var(--radius-md);padding:20px;text-align:center;transition:var(--tr)}
+    .stat-box:hover{border-color:var(--border-accent)}
+    .stat-box .snum{font-family:var(--font-d);font-size:28px;font-weight:700;background:var(--gradient-accent);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .stat-box .slbl{font-size:12px;color:var(--text-muted);margin-top:4px}
+    .cardim-link{display:flex;align-items:center;gap:10px;background:rgba(79,127,255,0.08);border:1px solid rgba(79,127,255,0.2);border-radius:var(--radius-md);padding:14px 20px;margin-top:24px}
+    .cardim-link a{color:var(--accent-1);font-weight:600;font-size:13px}
+    .cardim-link a:hover{text-decoration:underline}
+    .pillars{display:flex;flex-direction:column;gap:16px;margin-top:36px}
+    .pillar{display:flex;align-items:flex-start;gap:16px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-md);padding:18px 20px;transition:var(--tr)}
+    .pillar:hover{border-color:var(--border-accent);background:var(--bg-elevated)}
+    .p-icon{width:44px;height:44px;border-radius:12px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:20px}
+    .p-content h4{font-size:15px;font-weight:600;margin-bottom:4px}
+    .p-content p{font-size:13px;color:var(--text-secondary);line-height:1.55}
+
+    /* RESEARCH */
+    #research{padding:100px 0;background:var(--bg-card)}
+    .r-header{text-align:center;margin-bottom:64px}
+    .r-header .section-label{justify-content:center}
+    .r-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .r-card{background:var(--bg-deep);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px;position:relative;overflow:hidden;transition:var(--tr)}
+    .r-card:hover{transform:translateY(-6px);border-color:var(--border-accent);box-shadow:var(--shadow-glow)}
+    .r-num{font-family:var(--font-d);font-size:48px;font-weight:800;opacity:0.06;position:absolute;top:16px;right:24px;line-height:1}
+    .r-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:20px}
+    .r-card h3{font-size:18px;font-weight:700;margin-bottom:10px}
+    .r-card p{font-size:13px;color:var(--text-secondary);line-height:1.65}
+    .r-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:16px}
+    .r-tags .tag{font-size:10px;padding:3px 10px}
+
+    /* TEAM */
+    #team{padding:100px 0}
+    .t-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;margin-top:64px}
+    .t-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-xl);padding:32px;transition:var(--tr)}
+    .t-card:hover{border-color:var(--border-accent);transform:translateY(-4px);box-shadow:var(--shadow-glow)}
+    .t-top{display:flex;gap:20px;margin-bottom:20px}
+    .t-avatar{width:80px;height:80px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:var(--font-d);font-size:22px;font-weight:700;color:white;position:relative}
+    .av-1{background:linear-gradient(135deg,#4f7fff,#7c5fff)}
+    .av-2{background:linear-gradient(135deg,#7c5fff,#e05ca0)}
+    .av-3{background:linear-gradient(135deg,#00c9a7,#4f7fff)}
+    .av-4{background:linear-gradient(135deg,#f7971e,#ffd200)}
+    .av-badge{position:absolute;bottom:-4px;right:-4px;width:26px;height:26px;border-radius:50%;background:var(--bg-card);display:flex;align-items:center;justify-content:center;font-size:13px;border:2px solid var(--bg-card)}
+    .t-name{font-family:var(--font-d);font-size:20px;font-weight:700;line-height:1.2;margin-bottom:4px}
+    .t-role{font-size:13px;font-weight:600;color:var(--accent-1);margin-bottom:6px}
+    .t-aff{font-size:12px;color:var(--text-muted);line-height:1.4}
+    .t-bio{font-size:13px;color:var(--text-secondary);line-height:1.65;margin-bottom:20px}
+    .t-exp{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px}
+    .t-links{display:flex;gap:10px;flex-wrap:wrap}
+    .t-link{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:var(--radius-sm);font-size:12px;font-weight:600;transition:var(--tr);border:1px solid var(--border);color:var(--text-secondary)}
+    .t-link:hover{color:var(--text-primary);border-color:var(--border-accent);background:rgba(255,255,255,0.04)}
+
+    /* EDUCATION */
+    #education{padding:100px 0;background:var(--bg-card)}
+    .edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+    .prog-card{background:var(--bg-elevated);border:1px solid var(--border-accent);border-radius:var(--radius-xl);padding:40px;position:relative;overflow:hidden}
+    .prog-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gradient-accent)}
+    .prog-logo{font-family:var(--font-d);font-size:42px;font-weight:800;background:var(--gradient-accent);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:4px}
+    .prog-sub{font-size:13px;color:var(--text-muted);margin-bottom:24px}
+    .prog-feat{display:flex;flex-direction:column;gap:12px;margin-bottom:28px}
+    .prog-item{display:flex;align-items:flex-start;gap:12px;font-size:14px;color:var(--text-secondary)}
+    .prog-item i{color:var(--accent-1);font-size:14px;margin-top:2px;flex-shrink:0}
+    .prog-meta{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px}
+    .prog-m{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px}
+    .prog-m .ml{font-size:11px;color:var(--text-muted);font-weight:600;letter-spacing:1px;text-transform:uppercase}
+    .prog-m .mv{font-size:14px;font-weight:600;color:var(--text-primary);margin-top:4px}
+
+    /* PUBLICATIONS */
+    #publications{padding:100px 0}
+    .pub-list{display:flex;flex-direction:column;gap:16px;margin-top:64px}
+    .pub{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-md);padding:24px 28px;display:flex;gap:24px;align-items:flex-start;transition:var(--tr)}
+    .pub:hover{border-color:var(--border-accent);background:var(--bg-elevated)}
+    .pub-yr{font-family:var(--font-d);font-size:13px;font-weight:700;color:var(--accent-1);min-width:44px;padding-top:2px}
+    .pub-body{flex:1}
+    .pub-body h4{font-size:15px;font-weight:600;line-height:1.4;margin-bottom:6px}
+    .pub-auth{font-size:12px;color:var(--text-muted);margin-bottom:8px}
+    .pub-journal{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--accent-2)}
+    .pub-link{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:10px;border:1px solid var(--border);color:var(--text-muted);transition:var(--tr);flex-shrink:0}
+    .pub-link:hover{color:var(--accent-1);border-color:var(--accent-1);background:rgba(79,127,255,0.08)}
+
+    /* NETWORK */
+    #network{padding:100px 0;background:var(--bg-card)}
+    .n-header{text-align:center;margin-bottom:64px}
+    .n-header .section-label{justify-content:center}
+    .n-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .n-card{background:var(--bg-deep);border:1px solid var(--border);border-radius:var(--radius-md);padding:24px;text-align:center;transition:var(--tr)}
+    .n-card:hover{border-color:var(--border-accent);transform:translateY(-3px)}
+    .n-flag{font-size:28px;margin-bottom:10px}
+    .n-name{font-size:14px;font-weight:600;margin-bottom:4px}
+    .n-country{font-size:12px;color:var(--text-muted)}
+    .bodies{margin-top:48px;text-align:center}
+    .bodies-title{font-size:13px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:2px;margin-bottom:24px}
+    .pills{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+    .pill{background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:50px;padding:10px 20px;font-size:13px;font-weight:500;color:var(--text-secondary);transition:var(--tr);display:flex;align-items:center;gap:8px}
+    .pill:hover{border-color:var(--border-accent);color:var(--text-primary)}
+    .pill i{color:var(--accent-1)}
+
+    /* CONTACT */
+    #contact{padding:100px 0}
+    .c-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+    .c-items{display:flex;flex-direction:column;gap:16px;margin-top:40px}
+    .c-item{display:flex;align-items:flex-start;gap:16px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-md);padding:18px 20px}
+    .c-ico{width:40px;height:40px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:16px}
+    .c-item h5{font-size:12px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+    .c-item p,.c-item a{font-size:14px;color:var(--text-secondary)}
+    .c-item a:hover{color:var(--accent-1)}
+    .c-form{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-xl);padding:40px}
+    .c-form h3{font-size:22px;font-weight:700;margin-bottom:8px;font-family:var(--font-d)}
+    .c-form > p{font-size:14px;color:var(--text-secondary);margin-bottom:28px}
+    .fg{margin-bottom:16px}
+    .fg label{display:block;font-size:12px;font-weight:600;color:var(--text-secondary);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px}
+    .fg input,.fg select,.fg textarea{width:100%;background:var(--bg-elevated);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 16px;font-size:14px;color:var(--text-primary);font-family:var(--font-b);transition:var(--tr);outline:none}
+    .fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--accent-1);box-shadow:0 0 0 3px rgba(79,127,255,0.1)}
+    .fg select option{background:var(--bg-elevated)}
+    .fg textarea{resize:vertical;min-height:110px}
+    .frow{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+    /* FOOTER */
+    footer{background:var(--bg-card);border-top:1px solid var(--border);padding:48px 0 24px}
+    .f-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:40px}
+    .f-brand p{font-size:13px;color:var(--text-muted);line-height:1.7;margin-top:12px;max-width:260px}
+    .f-col h5{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px;color:var(--text-secondary)}
+    .f-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+    .f-col ul a{font-size:13px;color:var(--text-muted);transition:var(--tr)}
+    .f-col ul a:hover{color:var(--accent-1)}
+    .f-bottom{border-top:1px solid var(--border);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+    .f-bottom p{font-size:12px;color:var(--text-muted)}
+    .f-social{display:flex;gap:12px}
+    .s-link{width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,0.05);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--text-muted);transition:var(--tr)}
+    .s-link:hover{color:var(--accent-1);border-color:var(--accent-1);background:rgba(79,127,255,0.08)}
+
+    /* ANIMATIONS */
+    .fi{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+    .fi.visible{opacity:1;transform:translateY(0)}
+    .fi.d1{transition-delay:.1s}.fi.d2{transition-delay:.2s}.fi.d3{transition-delay:.3s}.fi.d4{transition-delay:.4s}
+
+    /* RESPONSIVE */
+    @media(max-width:1024px){
+      .hero-inner{grid-template-columns:1fr;gap:48px;padding:60px 0}
+      .hero-visual{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+      .about-grid,.edu-grid,.c-grid{grid-template-columns:1fr;gap:48px}
+      .r-grid{grid-template-columns:repeat(2,1fr)}
+      .t-grid{grid-template-columns:1fr}
+      .n-grid{grid-template-columns:repeat(2,1fr)}
+      .f-grid{grid-template-columns:1fr 1fr;gap:32px}
+    }
+    @media(max-width:768px){
+      .nav-links{display:none}
+      .hamburger{display:flex}
+      .mobile-menu.open{display:flex;flex-direction:column;background:rgba(8,9,13,0.98);backdrop-filter:blur(20px);position:fixed;inset:0;z-index:200;padding:80px 24px 40px;gap:8px}
+      .mobile-menu.open a{font-size:22px;font-weight:600;color:var(--text-primary);padding:14px 0;border-bottom:1px solid var(--border);width:100%}
+      .mc-btn{position:absolute;top:24px;right:24px;background:none;border:none;color:var(--text-primary);font-size:24px;cursor:pointer}
+      .r-grid,.n-grid,.hero-visual,.frow{grid-template-columns:1fr}
+      .f-grid{grid-template-columns:1fr}
+      #hero{padding-top:60px}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <div class="logo-icon">&#x1FAC0;</div>
+        <div>
+          CardioImmuno Lab
+          <span style="font-size:10px;color:#9da8c7;display:block;font-family:'Inter',sans-serif;font-weight:400;">University of Padova</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#education">CARDIM</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#network">Network</a></li>
+        <li><a href="#contact" class="nav-cta btn">Collaborate</a></li>
+      </ul>
+      <button class="hamburger" id="hambBtn" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobMenu">
+  <button class="mc-btn" onclick="toggleMenu()">&#x2715;</button>
+  <a href="#about" onclick="toggleMenu()">About</a>
+  <a href="#research" onclick="toggleMenu()">Research</a>
+  <a href="#team" onclick="toggleMenu()">Team</a>
+  <a href="#education" onclick="toggleMenu()">CARDIM Master</a>
+  <a href="#publications" onclick="toggleMenu()">Publications</a>
+  <a href="#network" onclick="toggleMenu()">Network</a>
+  <a href="#contact" onclick="toggleMenu()">Collaborate</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+  <div class="hero-grid"></div>
+  <div class="container">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-badge"><span class="dot"></span>University of Padova &middot; Dept. Cardiac, Thoracic &amp; Vascular Sciences</div>
+        <h1 class="hero-title">Advancing<br><span class="line-grad">Cardio&shy;Immunology</span><br>Research</h1>
+        <p class="hero-desc">A multidisciplinary team dedicated to understanding, diagnosing, and treating myocarditis, pericarditis, and immune-mediated inflammatory heart diseases &mdash; fostering global scientific collaboration.</p>
+        <div class="hero-actions">
+          <a href="#team" class="btn btn-primary"><i class="fas fa-users"></i> Meet the Team</a>
+          <a href="#contact" class="btn btn-outline"><i class="fas fa-handshake"></i> Collaborate</a>
+        </div>
+        <div class="hero-stats">
+          <div><div class="stat-num">30+</div><div class="stat-label">Years research</div></div>
+          <div><div class="stat-num">200+</div><div class="stat-label">Publications</div></div>
+          <div><div class="stat-num">15+</div><div class="stat-label">Int&#x2019;l partners</div></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-card fi d1">
+          <div class="hc-head"><div class="hc-icon ic-blue"><i class="fas fa-dna"></i></div><div><div class="hc-title">Immunophenotyping</div><div class="hc-sub">Biomarker-guided therapy</div></div></div>
+          <p>Identifying cardiac autoantibodies and immune cell profiles to guide precision immunosuppressive treatment.</p>
+        </div>
+        <div class="hero-card fi d2">
+          <div class="hc-head"><div class="hc-icon ic-purple"><i class="fas fa-radiation"></i></div><div><div class="hc-title">Cardiac MRI</div><div class="hc-sub">Multi-modality imaging</div></div></div>
+          <p>Advanced CMR protocols for tissue characterisation, inflammation mapping, and prognostic stratification.</p>
+        </div>
+        <div class="hero-card fi d3">
+          <div class="hc-head"><div class="hc-icon ic-pink"><i class="fas fa-microscope"></i></div><div><div class="hc-title">Endomyocardial Biopsy</div><div class="hc-sub">Gold standard diagnosis</div></div></div>
+          <p>Expert EMB-based histological and immunohistochemical analysis for definitive myocarditis classification.</p>
+        </div>
+        <div class="hero-card fi d4">
+          <div class="hc-head"><div class="hc-icon ic-green"><i class="fas fa-chart-line"></i></div><div><div class="hc-title">Machine Learning</div><div class="hc-sub">Data-driven prognosis</div></div></div>
+          <p>Computational models integrating clinical, imaging, and genomic data for outcome prediction.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="fi">
+        <div class="about-card">
+          <div class="section-label">Our Mission</div>
+          <h2 style="font-family:'Outfit',sans-serif;font-size:26px;font-weight:700;line-height:1.2;margin-bottom:16px;">Bridging Cardiology<br>&amp; Clinical Immunology</h2>
+          <p style="font-size:14px;color:var(--text-secondary);line-height:1.75;">We run a dedicated multidisciplinary outpatient clinic for patients with clinically suspected or biopsy-proven myocarditis, pericarditis, and immune-mediated cardiomyopathies. Our approach combines cutting-edge diagnostics with individualised immunomodulatory strategies.</p>
+          <div class="stat-grid">
+            <div class="stat-box"><div class="snum">1,000+</div><div class="slbl">Patients followed</div></div>
+            <div class="stat-box"><div class="snum">ESC</div><div class="slbl">Working Group</div></div>
+            <div class="stat-box"><div class="snum">EACVI</div><div class="slbl">CMR Expertise</div></div>
+            <div class="stat-box"><div class="snum">LT-CMY</div><div class="slbl">Registry Chair</div></div>
+          </div>
+          <div class="cardim-link">
+            <i class="fas fa-graduation-cap" style="color:var(--accent-1)"></i>
+            <div><span style="color:var(--text-muted);font-size:11px;">Directors of the</span>
+            <a href="https://uel.unipd.it/master-e-corsi/cardim-cardioimmunologia/" target="_blank"> CARDIM Master Programme &#x2192;</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="fi d2">
+        <div class="section-label">Who We Are</div>
+        <h2 class="section-title">A Precision Medicine <span>Cardio&shy;Immunology</span> Group</h2>
+        <p class="section-desc">Based at the Dept. of Cardiac, Thoracic, Vascular Sciences and Public Health at Univ. Padova, we combine clinical expertise, advanced imaging, molecular biology, and data science to push the boundaries of inflammatory heart disease management.</p>
+        <div class="pillars">
+          <div class="pillar"><div class="p-icon ic-blue"><i class="fas fa-flask"></i></div><div class="p-content"><h4>Translational Research</h4><p>From bench to bedside: autoantibody profiling, viral genomics, and immune pathway analysis informing clinical practice.</p></div></div>
+          <div class="pillar"><div class="p-icon ic-purple"><i class="fas fa-globe-europe"></i></div><div class="p-content"><h4>Global Collaboration Network</h4><p>Active partnerships with ESC working groups, European registries, and research institutions across 3 continents.</p></div></div>
+          <div class="pillar"><div class="p-icon ic-pink"><i class="fas fa-chalkboard-teacher"></i></div><div class="p-content"><h4>Education &amp; Training</h4><p>Directors of CARDIM &mdash; Italy&apos;s only dedicated postgraduate master in Cardiac Immunology at Univ. Padova.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section id="research">
+  <div class="container">
+    <div class="r-header fi">
+      <div class="section-label">Research Areas</div>
+      <h2 class="section-title">Our Scientific <span>Focus</span></h2>
+      <p class="section-desc" style="margin:16px auto 0;">Six core research domains shaping our understanding of inflammatory heart disease and immune-cardiac crosstalk.</p>
+    </div>
+    <div class="r-grid">
+      <div class="r-card fi"><div class="r-num">01</div><div class="r-icon ic-blue"><i class="fas fa-heartbeat"></i></div><h3>Myocarditis Diagnosis &amp; Prognosis</h3><p>Clinical predictors of relapse, death, or transplant. EMB-guided classification of viral vs. autoimmune forms for targeted therapy.</p><div class="r-tags"><span class="tag">EMB</span><span class="tag">Biomarkers</span><span class="tag">Registry</span></div></div>
+      <div class="r-card fi d1"><div class="r-num">02</div><div class="r-icon ic-purple"><i class="fas fa-radiation"></i></div><h3>Cardiac MRI &amp; Multi-Modality Imaging</h3><p>CMR tissue characterisation, T1/T2 mapping, late gadolinium enhancement, and novel sequences for inflammation quantification.</p><div class="r-tags"><span class="tag">CMR</span><span class="tag">T1/T2 Mapping</span><span class="tag">LGE</span></div></div>
+      <div class="r-card fi d2"><div class="r-num">03</div><div class="r-icon ic-pink"><i class="fas fa-shield-virus"></i></div><h3>Autoimmune Cardiomyopathy</h3><p>Cardiac autoantibody profiling, genetic-environmental factors, HLA associations, and immunosuppressive treatment optimisation.</p><div class="r-tags"><span class="tag">Autoantibodies</span><span class="tag">HLA</span><span class="tag">Immunosuppression</span></div></div>
+      <div class="r-card fi"><div class="r-num">04</div><div class="r-icon ic-green"><i class="fas fa-syringe"></i></div><h3>Pericardial Disease &amp; Pericarditis</h3><p>Recurrent pericarditis: immunological mechanisms, IL-1 pathway targeting, colchicine and IL-1 blockers in clinical practice.</p><div class="r-tags"><span class="tag">Colchicine</span><span class="tag">IL-1</span><span class="tag">Recurrence</span></div></div>
+      <div class="r-card fi d1"><div class="r-num">05</div><div class="r-icon" style="background:rgba(252,185,0,0.12);color:#fcb900;width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:20px;"><i class="fas fa-brain"></i></div><h3>Machine Learning &amp; Computational Cardiology</h3><p>AI-driven outcome models integrating clinical, imaging, and omics data for personalised risk prediction and therapeutic decision support.</p><div class="r-tags"><span class="tag">Deep Learning</span><span class="tag">Omics</span><span class="tag">Prediction</span></div></div>
+      <div class="r-card fi d2"><div class="r-num">06</div><div class="r-icon" style="background:rgba(192,57,43,0.15);color:#e74c3c;width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:20px;"><i class="fas fa-capsules"></i></div><h3>Systemic Immune Disease &amp; the Heart</h3><p>Cardiac manifestations in systemic lupus, sarcoidosis, giant cell arteritis, and other autoimmune conditions. Interdisciplinary management.</p><div class="r-tags"><span class="tag">Lupus</span><span class="tag">Sarcoidosis</span><span class="tag">GCA</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team">
+  <div class="container">
+    <div class="fi">
+      <div class="section-label">The Group</div>
+      <h2 class="section-title">Meet the <span>Research Team</span></h2>
+      <p class="section-desc">A complementary group of clinicians, imaging experts, researchers, and data scientists united by a passion for cardiac immunology.</p>
+    </div>
+    <div class="t-grid">
+      <!-- Prof. Caforio -->
+      <div class="t-card fi">
+        <div class="t-top">
+          <div class="t-avatar av-1">ALC<div class="av-badge">&#x1F451;</div></div>
+          <div><div class="t-name">Prof. Alida L.P. Caforio</div><div class="t-role">Group Lead &amp; Principal Investigator</div><div class="t-aff">Associate Professor of Cardiology<br>University of Padova, Italy</div></div>
+        </div>
+        <p class="t-bio">Pioneer in cardioimmunology with over three decades of research into the pathogenesis, diagnosis, and treatment of myocarditis and inflammatory cardiomyopathies. Director of the CARDIM master programme and chair of the ESC Long-term Cardiomyopathy &amp; Myocarditis Registry. International authority on cardiac autoantibodies and EMB-guided personalised therapy.</p>
+        <div class="t-exp"><span class="tag">Cardioimmunology</span><span class="tag">Myocarditis</span><span class="tag">Autoantibodies</span><span class="tag">EMB</span><span class="tag">ESC Working Group</span></div>
+        <div class="t-links">
+          <a href="https://esc365.escardio.org/person/9537" target="_blank" class="t-link"><i class="fas fa-heartbeat"></i> ESC 365</a>
+          <a href="https://orcid.org/0000-0002-4901-5655" target="_blank" class="t-link"><i class="fab fa-orcid"></i> ORCID</a>
+          <a href="https://uel.unipd.it/master-e-corsi/cardim-cardioimmunologia/" target="_blank" class="t-link"><i class="fas fa-graduation-cap"></i> CARDIM</a>
+        </div>
+      </div>
+      <!-- Dr. Baritussio -->
+      <div class="t-card fi d1">
+        <div class="t-top">
+          <div class="t-avatar av-2">AB<div class="av-badge">&#x1F52C;</div></div>
+          <div><div class="t-name">Dr. Anna Baritussio</div><div class="t-role">Imaging Expert &amp; CMR Specialist</div><div class="t-aff">Consultant Cardiologist &amp; Adjunct Professor<br>University of Padova, Italy</div></div>
+        </div>
+        <p class="t-bio">Specialist in multi-modality cardiovascular imaging with a focus on cardiac MRI for inflammatory heart disease. Holds Level 3 CMR certification from EACVI and SCMR. Former CMR Councillor at EACVI. Fellow training at Bristol Heart Institute. Expert in T1/T2 mapping and late gadolinium enhancement for myocarditis characterisation.</p>
+        <div class="t-exp"><span class="tag">Cardiac MRI</span><span class="tag">T1/T2 Mapping</span><span class="tag">EACVI CMR</span><span class="tag">Multi-modality Imaging</span></div>
+        <div class="t-links">
+          <a href="https://esc365.escardio.org/person/266335" target="_blank" class="t-link"><i class="fas fa-heartbeat"></i> ESC 365</a>
+          <a href="https://scholar.google.com/citations?user=gLsy3U4AAAAJ&hl=en" target="_blank" class="t-link"><i class="fas fa-graduation-cap"></i> Scholar</a>
+        </div>
+      </div>
+      <!-- Dr. Giordani -->
+      <div class="t-card fi d2">
+        <div class="t-top">
+          <div class="t-avatar av-3">AG<div class="av-badge">&#x1F9EC;</div></div>
+          <div><div class="t-name">Dr. Andrea Silvio Giordani</div><div class="t-role">Clinical Researcher</div><div class="t-aff">Dept. Cardiac, Thoracic, Vascular Sciences<br>University of Padova, Italy</div></div>
+        </div>
+        <p class="t-bio">Clinician-scientist focused on the immunopathobiology of myocarditis and the use of immunophenotyping to guide treatment decisions. Extensive publication record on clinical predictors of relapse, death, and cardiac transplantation in myocarditis, and on cardiac manifestations of systemic immune-mediated diseases.</p>
+        <div class="t-exp"><span class="tag">Immunophenotyping</span><span class="tag">Myocarditis Prognosis</span><span class="tag">Immune-mediated Disease</span><span class="tag">Clinical Research</span></div>
+        <div class="t-links">
+          <a href="https://esc365.escardio.org/person/560884" target="_blank" class="t-link"><i class="fas fa-heartbeat"></i> ESC 365</a>
+          <a href="https://scholar.google.com/citations?user=2ZSv1tcAAAAJ&hl=it" target="_blank" class="t-link"><i class="fas fa-graduation-cap"></i> Scholar</a>
+        </div>
+      </div>
+      <!-- Dr. Scognamiglio -->
+      <div class="t-card fi d3">
+        <div class="t-top">
+          <div class="t-avatar av-4">FS<div class="av-badge">&#x1F4BB;</div></div>
+          <div><div class="t-name">Dr. Federico Scognamiglio</div><div class="t-role">Data Scientist &amp; Biostatistician</div><div class="t-aff">Azienda Ospedaliera &ndash; Padova University Hospital<br>Italy</div></div>
+        </div>
+        <p class="t-bio">Expert in machine learning, computational biology, and biostatistics applied to cardiovascular medicine. Develops predictive models integrating clinical, imaging, and omics data for inflammatory heart diseases. Contributes quantitative analysis and AI-driven tools to the group&apos;s translational research pipeline.</p>
+        <div class="t-exp"><span class="tag">Machine Learning</span><span class="tag">Biostatistics</span><span class="tag">Computational Biology</span><span class="tag">Predictive Models</span></div>
+        <div class="t-links">
+          <a href="https://scholar.google.com/citations?user=xk0Wj-0AAAAJ&hl=it" target="_blank" class="t-link"><i class="fas fa-graduation-cap"></i> Scholar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION / CARDIM -->
+<section id="education">
+  <div class="container">
+    <div class="edu-grid">
+      <div class="fi">
+        <div class="section-label">Education</div>
+        <h2 class="section-title">CARDIM: Italy&apos;s Only Postgraduate Master in <span>Cardiac Immunology</span></h2>
+        <p class="section-desc">A Level II Master&apos;s programme at the University of Padova (Unipd Executive Learning), delivering the advanced clinical and scientific knowledge needed to manage patients with myocarditis, pericarditis, and other immune-mediated inflammatory heart diseases.</p>
+        <div class="pillars" style="margin-top:32px;">
+          <div class="pillar"><div class="p-icon ic-blue"><i class="fas fa-users"></i></div><div class="p-content"><h4>Who should apply?</h4><p>Cardiologists, rheumatologists, internists, and physicians seeking deep expertise in cardiac inflammation and immune-mediated conditions.</p></div></div>
+          <div class="pillar"><div class="p-icon ic-purple"><i class="fas fa-globe"></i></div><div class="p-content"><h4>Open to international participants</h4><p>The programme welcomes applications from physicians across Europe and internationally. Lectures delivered by leading European experts.</p></div></div>
+        </div>
+        <div style="margin-top:32px;"><a href="https://uel.unipd.it/master-e-corsi/cardim-cardioimmunologia/" target="_blank" class="btn btn-primary"><i class="fas fa-external-link-alt"></i> CARDIM Programme Details</a></div>
+      </div>
+      <div class="prog-card fi d2">
+        <div class="prog-logo">CARDIM</div>
+        <div class="prog-sub">Cardioimmunologia &middot; Unipd Executive Learning</div>
+        <div class="prog-feat">
+          <div class="prog-item"><i class="fas fa-check-circle"></i> Comprehensive myocarditis &amp; pericarditis management</div>
+          <div class="prog-item"><i class="fas fa-check-circle"></i> Cardiac MRI interpretation and protocols</div>
+          <div class="prog-item"><i class="fas fa-check-circle"></i> Endomyocardial biopsy: indications and analysis</div>
+          <div class="prog-item"><i class="fas fa-check-circle"></i> Immunosuppressive and immunomodulatory strategies</div>
+          <div class="prog-item"><i class="fas fa-check-circle"></i> Systemic autoimmune diseases and the heart</div>
+          <div class="prog-item"><i class="fas fa-check-circle"></i> Registry participation and clinical research methods</div>
+          <div class="prog-item"><i class="fas fa-check-circle"></i> Case-based learning with real patient cohorts</div>
+        </div>
+        <div class="prog-meta">
+          <div class="prog-m"><div class="ml">Level</div><div class="mv">Master II (60 ECTS)</div></div>
+          <div class="prog-m"><div class="ml">Language</div><div class="mv">Italian / English</div></div>
+          <div class="prog-m"><div class="ml">Institution</div><div class="mv">Univ. Padova</div></div>
+          <div class="prog-m"><div class="ml">Mode</div><div class="mv">Blended</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <div class="container">
+    <div class="fi">
+      <div class="section-label">Publications</div>
+      <h2 class="section-title">Selected <span>Key Papers</span></h2>
+      <p class="section-desc">Representative publications from the group&apos;s research output in myocarditis, cardioimmunology, and cardiac imaging.</p>
+    </div>
+    <div class="pub-list">
+      <div class="pub fi"><div class="pub-yr">2023</div><div class="pub-body"><h4>Clinical predictors of relapse, death, or heart transplantation in patients with myocarditis: a systematic review and meta-analysis</h4><div class="pub-auth">Giordani AS, Caforio ALP, Baritussio A et al.</div><div class="pub-journal"><i class="fas fa-journal-whills"></i> European Heart Journal</div></div><a href="https://pubmed.ncbi.nlm.nih.gov/?term=Giordani+Caforio+myocarditis" target="_blank" class="pub-link"><i class="fas fa-arrow-up-right-from-square"></i></a></div>
+      <div class="pub fi d1"><div class="pub-yr">2022</div><div class="pub-body"><h4>Immunosuppressive therapy in myocarditis: a pragmatic, evidence-based approach guided by endomyocardial biopsy findings</h4><div class="pub-auth">Caforio ALP, Baritussio A, Giordani AS et al.</div><div class="pub-journal"><i class="fas fa-journal-whills"></i> European Journal of Heart Failure</div></div><a href="https://pubmed.ncbi.nlm.nih.gov/?term=Caforio+myocarditis+immunosuppressive" target="_blank" class="pub-link"><i class="fas fa-arrow-up-right-from-square"></i></a></div>
+      <div class="pub fi d2"><div class="pub-yr">2022</div><div class="pub-body"><h4>Cardiac MRI in myocarditis: from Lake Louise criteria to advanced parametric imaging &mdash; practical guidance for the clinician</h4><div class="pub-auth">Baritussio A, Caforio ALP, Giordani AS et al.</div><div class="pub-journal"><i class="fas fa-journal-whills"></i> JACC: Cardiovascular Imaging</div></div><a href="https://pubmed.ncbi.nlm.nih.gov/?term=Baritussio+myocarditis+CMR+Padova" target="_blank" class="pub-link"><i class="fas fa-arrow-up-right-from-square"></i></a></div>
+      <div class="pub fi"><div class="pub-yr">2021</div><div class="pub-body"><h4>ESC guidelines on the diagnosis and management of acute and chronic heart failure &mdash; myocarditis working group contribution</h4><div class="pub-auth">McDonagh T, Metra M, Adamo M, &hellip; Caforio ALP et al.</div><div class="pub-journal"><i class="fas fa-journal-whills"></i> European Heart Journal</div></div><a href="https://pubmed.ncbi.nlm.nih.gov/?term=ESC+heart+failure+guidelines+2021" target="_blank" class="pub-link"><i class="fas fa-arrow-up-right-from-square"></i></a></div>
+      <div class="pub fi d1"><div class="pub-yr">2020</div><div class="pub-body"><h4>Immunophenotyping of peripheral blood mononuclear cells in myocarditis: a machine learning approach to predict prognosis</h4><div class="pub-auth">Scognamiglio F, Giordani AS, Caforio ALP et al.</div><div class="pub-journal"><i class="fas fa-journal-whills"></i> Frontiers in Cardiovascular Medicine</div></div><a href="https://pubmed.ncbi.nlm.nih.gov/?term=Scognamiglio+myocarditis+machine+learning" target="_blank" class="pub-link"><i class="fas fa-arrow-up-right-from-square"></i></a></div>
+    </div>
+    <div style="text-align:center;margin-top:36px;"><a href="https://pubmed.ncbi.nlm.nih.gov/?term=Caforio+myocarditis+Padova" target="_blank" class="btn btn-outline"><i class="fas fa-external-link-alt"></i> View all on PubMed</a></div>
+  </div>
+</section>
+
+<!-- NETWORK -->
+<section id="network">
+  <div class="container">
+    <div class="n-header fi">
+      <div class="section-label">International Network</div>
+      <h2 class="section-title">Global <span>Collaborations</span></h2>
+      <p class="section-desc" style="margin:16px auto 0;">We actively seek and maintain international collaborations with leading cardiac and immunology centres worldwide.</p>
+    </div>
+    <div class="n-grid fi">
+      <div class="n-card"><div class="n-flag">&#x1F1E9;&#x1F1EA;</div><div class="n-name">Charit&eacute; &ndash; Berlin</div><div class="n-country">Germany</div></div>
+      <div class="n-card"><div class="n-flag">&#x1F1EC;&#x1F1E7;</div><div class="n-name">King&apos;s College London</div><div class="n-country">United Kingdom</div></div>
+      <div class="n-card"><div class="n-flag">&#x1F1EB;&#x1F1F7;</div><div class="n-name">H&ocirc;pital Bichat &ndash; Paris</div><div class="n-country">France</div></div>
+      <div class="n-card"><div class="n-flag">&#x1F1E8;&#x1F1FF;</div><div class="n-name">IKEM &ndash; Prague</div><div class="n-country">Czech Republic</div></div>
+      <div class="n-card"><div class="n-flag">&#x1F1FA;&#x1F1F8;</div><div class="n-name">Johns Hopkins &ndash; Baltimore</div><div class="n-country">United States</div></div>
+      <div class="n-card"><div class="n-flag">&#x1F1F8;&#x1F1EA;</div><div class="n-name">Karolinska &ndash; Stockholm</div><div class="n-country">Sweden</div></div>
+    </div>
+    <div class="bodies fi">
+      <div class="bodies-title">Member of</div>
+      <div class="pills">
+        <div class="pill"><i class="fas fa-heart"></i> ESC Working Group on Myocardial &amp; Pericardial Diseases</div>
+        <div class="pill"><i class="fas fa-camera"></i> European Association of Cardiovascular Imaging (EACVI)</div>
+        <div class="pill"><i class="fas fa-database"></i> ESC LT-CMY Registry</div>
+        <div class="pill"><i class="fas fa-graduation-cap"></i> Unipd Executive Learning Board</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="c-grid">
+      <div class="fi">
+        <div class="section-label">Get in Touch</div>
+        <h2 class="section-title">Let&apos;s <span>Collaborate</span></h2>
+        <p class="section-desc">We welcome collaboration requests from researchers, clinicians, and scientists worldwide. Whether for joint studies, data sharing, or exchange programmes &mdash; reach out.</p>
+        <div class="c-items">
+          <div class="c-item"><div class="c-ico ic-blue"><i class="fas fa-university"></i></div><div><h5>Institution</h5><p>Dept. Cardiac, Thoracic, Vascular Sciences and Public Health<br>University of Padova</p></div></div>
+          <div class="c-item"><div class="c-ico ic-purple"><i class="fas fa-map-marker-alt"></i></div><div><h5>Location</h5><p>Via Giustiniani 2, 35128 Padova, Italy</p></div></div>
+          <div class="c-item"><div class="c-ico ic-pink"><i class="fas fa-graduation-cap"></i></div><div><h5>CARDIM Master</h5><a href="https://uel.unipd.it/master-e-corsi/cardim-cardioimmunologia/" target="_blank">uel.unipd.it &ndash; CARDIM &#x2192;</a></div></div>
+          <div class="c-item"><div class="c-ico ic-green"><i class="fas fa-heartbeat"></i></div><div><h5>Scientific Profile</h5><a href="https://esc365.escardio.org/person/9537" target="_blank">ESC 365 &ndash; Prof. Caforio &#x2192;</a></div></div>
+        </div>
+      </div>
+      <div class="c-form fi d2">
+        <h3>Send a Message</h3>
+        <p>For collaboration, research enquiries, or media requests.</p>
+        <form id="cForm" onsubmit="handleSubmit(event)">
+          <div class="frow">
+            <div class="fg"><label for="fn">First Name</label><input type="text" id="fn" placeholder="John" required></div>
+            <div class="fg"><label for="ln">Last Name</label><input type="text" id="ln" placeholder="Doe" required></div>
+          </div>
+          <div class="fg"><label for="em">Email</label><input type="email" id="em" placeholder="j.doe@hospital.edu" required></div>
+          <div class="fg"><label for="inst">Institution</label><input type="text" id="inst" placeholder="University / Hospital"></div>
+          <div class="fg"><label for="rsn">Reason for Contact</label>
+            <select id="rsn"><option value="">Select a reason</option><option>Research Collaboration</option><option>Data Sharing / Registry</option><option>CARDIM Master Enquiry</option><option>Clinical Case Discussion</option><option>Media / Press</option><option>Other</option></select>
+          </div>
+          <div class="fg"><label for="msg">Message</label><textarea id="msg" placeholder="Briefly describe your proposal or question..." required></textarea></div>
+          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;"><i class="fas fa-paper-plane"></i> Send Message</button>
+        </form>
+        <div id="fSuccess" style="display:none;text-align:center;padding:32px 0;"><div style="font-size:42px;margin-bottom:12px;">&#x2705;</div><h4 style="margin-bottom:8px;font-family:'Outfit',sans-serif;">Message sent!</h4><p style="color:var(--text-secondary);font-size:14px;">Thank you for reaching out. We&apos;ll be in touch within a few working days.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="f-grid">
+      <div class="f-brand">
+        <div class="nav-logo"><div class="logo-icon">&#x1FAC0;</div><div>CardioImmuno Lab<span style="font-size:10px;color:#9da8c7;display:block;font-family:'Inter',sans-serif;">University of Padova</span></div></div>
+        <p>A multidisciplinary research group advancing the understanding and treatment of inflammatory heart disease at the University of Padova, Italy.</p>
+      </div>
+      <div class="f-col"><h5>Navigation</h5><ul><li><a href="#about">About Us</a></li><li><a href="#research">Research</a></li><li><a href="#team">Team</a></li><li><a href="#education">CARDIM</a></li><li><a href="#publications">Publications</a></li><li><a href="#network">Network</a></li></ul></div>
+      <div class="f-col"><h5>Resources</h5><ul><li><a href="https://uel.unipd.it/master-e-corsi/cardim-cardioimmunologia/" target="_blank">CARDIM Master</a></li><li><a href="https://esc365.escardio.org/person/9537" target="_blank">ESC 365 Profile</a></li><li><a href="https://orcid.org/0000-0002-4901-5655" target="_blank">ORCID</a></li><li><a href="https://pubmed.ncbi.nlm.nih.gov/?term=Caforio+myocarditis" target="_blank">PubMed</a></li></ul></div>
+      <div class="f-col"><h5>Affiliated Bodies</h5><ul><li><a href="https://www.escardio.org/" target="_blank">ESC</a></li><li><a href="https://www.escardio.org/Sub-specialty-communities/European-Association-of-Cardiovascular-Imaging-(EACVI)" target="_blank">EACVI</a></li><li><a href="https://www.unipd.it/" target="_blank">Univ. Padova</a></li><li><a href="https://uel.unipd.it/" target="_blank">Unipd Exec. Learning</a></li></ul></div>
+    </div>
+    <div class="f-bottom">
+      <p>&copy; 2025 CardioImmunology Research Group, University of Padova. All rights reserved.</p>
+      <div class="f-social">
+        <a href="https://esc365.escardio.org/person/9537" target="_blank" class="s-link" title="ESC 365"><i class="fas fa-heartbeat"></i></a>
+        <a href="https://orcid.org/0000-0002-4901-5655" target="_blank" class="s-link" title="ORCID"><i class="fab fa-orcid"></i></a>
+        <a href="https://pubmed.ncbi.nlm.nih.gov/?term=Caforio+myocarditis+Padova" target="_blank" class="s-link" title="PubMed"><i class="fas fa-book-medical"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  window.addEventListener('scroll',()=>document.getElementById('navbar').classList.toggle('scrolled',scrollY>20));
+  function toggleMenu(){document.getElementById('mobMenu').classList.toggle('open')}
+  const obs=new IntersectionObserver(e=>e.forEach(en=>{if(en.isIntersecting){en.target.classList.add('visible');obs.unobserve(en.target)}}),{threshold:0.12});
+  document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
+  function handleSubmit(e){e.preventDefault();document.getElementById('cForm').style.display='none';document.getElementById('fSuccess').style.display='block'}
+</script>
+</body>
+</html>
