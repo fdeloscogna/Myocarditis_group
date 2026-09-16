@@ -14,4 +14,4 @@ We are a multidisciplinary team dedicated to understanding, diagnosing, and trea
 
 ## 🚀 Live Website
 Deployed on GitHub Pages:
-https://fdeloscogna.github.io/myocardities_group/
+https://fdeloscogna.github.io/Myocarditis_group/
