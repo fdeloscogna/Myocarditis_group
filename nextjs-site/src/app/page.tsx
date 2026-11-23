@@ -353,7 +353,7 @@ export default function Home() {
             </div>
           </div>
           <div className={styles.fBottom}>
-            <p>© 2025 Cardioimmunology Research Group, University of Padova. All rights reserved.</p>
+            <p>© 2026 Cardioimmunology Research Group, University of Padova. All rights reserved.</p>
           </div>
         </div>
       </footer>
