@@ -1,0 +1,181 @@
+.topBar {
+  background: var(--esc-red-dark);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.topBarInner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.topBarLinks {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.topBarLinks a {
+  color: rgba(255, 255, 255, 0.85);
+  transition: var(--tr);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.topBarLinks a:hover {
+  color: #FFFFFF;
+  text-decoration: underline;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: #FFFFFF;
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+}
+
+.navInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 76px;
+}
+
+.navLogo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 19px;
+  color: var(--text-heading);
+}
+
+.logoBadge {
+  width: 40px;
+  height: 40px;
+  background: var(--esc-red);
+  color: #FFFFFF;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.logoText {
+  display: flex;
+  flex-direction: column;
+}
+
+.logoText span {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--esc-red);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  list-style: none;
+}
+
+.navLinks a {
+  padding: 10px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-body);
+  transition: var(--tr);
+}
+
+.navLinks a:hover {
+  color: var(--esc-red);
+  background: var(--esc-red-soft);
+}
+
+.navCta {
+  background: var(--esc-red) !important;
+  color: #FFFFFF !important;
+  border-radius: var(--radius-sm) !important;
+  padding: 10px 20px !important;
+}
+
+.navCta:hover {
+  background: var(--esc-red-dark) !important;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 6px;
+}
+
+.hamburger span {
+  width: 24px;
+  height: 2.5px;
+  background: var(--text-heading);
+  border-radius: 2px;
+  display: block;
+}
+
+.mobileMenu {
+  display: flex;
+  flex-direction: column;
+  background: #FFFFFF;
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  padding: 80px 24px 40px;
+  gap: 12px;
+}
+
+.mobileMenu a {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-heading);
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border-color);
+  width: 100%;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  background: none;
+  border: none;
+  color: var(--text-heading);
+  font-size: 28px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .topBar {
+    display: none;
+  }
+  .navLinks {
+    display: none;
+  }
+  .hamburger {
+    display: flex;
+  }
+}

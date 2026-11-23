@@ -1,0 +1,171 @@
+@import "tailwindcss";
+
+:root {
+  --esc-red: #C8102E;
+  --esc-red-dark: #99001A;
+  --esc-red-deep: #700013;
+  --esc-red-light: #E82C48;
+  --esc-red-soft: #FFF1F3;
+  --esc-red-subtle: rgba(200, 16, 46, 0.08);
+  --esc-red-glow: rgba(200, 16, 46, 0.18);
+  
+  --bg-white: #FFFFFF;
+  --bg-light: #F8FAFC;
+  --bg-card: #FFFFFF;
+  --bg-elevated: #F1F5F9;
+  --bg-dark: #0F172A;
+  --bg-footer: #0A0E1A;
+  
+  --text-heading: #0F172A;
+  --text-body: #334155;
+  --text-muted: #64748B;
+  --text-light: #94A3B8;
+  --text-on-red: #FFFFFF;
+  
+  --border-color: #E2E8F0;
+  --border-light: #F1F5F9;
+  --border-red: rgba(200, 16, 46, 0.25);
+  
+  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 2px 8px rgba(15, 23, 42, 0.05);
+  --shadow-lg: 0 4px 12px rgba(15, 23, 42, 0.06);
+  --shadow-red: 0 2px 6px rgba(200, 16, 46, 0.12);
+  
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 10px;
+  
+  --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --tr: all 0.15s ease;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-light);
+  color: var(--text-body);
+  line-height: 1.65;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--esc-red);
+  border-radius: 4px;
+}
+
+.container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: background 0.15s ease, border-color 0.15s ease;
+  font-family: var(--font-body);
+}
+
+.btn-primary {
+  background: var(--esc-red);
+  color: var(--text-on-red);
+}
+.btn-primary:hover {
+  background: var(--esc-red-dark);
+}
+
+.btn-outline {
+  background: #FFFFFF;
+  color: var(--esc-red);
+  border: 1px solid var(--esc-red);
+}
+.btn-outline:hover {
+  background: var(--esc-red);
+  color: #FFFFFF;
+}
+
+/* Tags */
+.tag {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 11px;
+  font-weight: 600;
+  background: var(--bg-light);
+  color: var(--text-muted);
+  border: 1px solid var(--border-color);
+}
+
+/* Section styles */
+.section-label {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--esc-red);
+  margin-bottom: 8px;
+  display: block;
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: clamp(26px, 3.5vw, 36px);
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--text-heading);
+  letter-spacing: -0.3px;
+}
+
+.section-desc {
+  font-size: 16px;
+  color: var(--text-muted);
+  max-width: 680px;
+  line-height: 1.7;
+  margin-top: 14px;
+}
+
+/* Animations */
+.fi {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.fi.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fi.d1 { transition-delay: 0.05s; }
+.fi.d2 { transition-delay: 0.1s; }
+.fi.d3 { transition-delay: 0.15s; }
+.fi.d4 { transition-delay: 0.2s; }
